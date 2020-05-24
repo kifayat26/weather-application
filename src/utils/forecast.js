@@ -9,7 +9,9 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('Unable to find location', undefined)
         } else {
-            callback(undefined, 'The current temperature is ' + (body.main.temp -273.15) + '\xB0C and the humidity is ' + body.main.humidity)
+            const temparature = Number.parseFloat(body.main.temp - 273.15).toPrecision(2)
+            
+            callback(undefined, 'The current temperature is ' + temparature + '\xB0C and the humidity is ' + body.main.humidity)
         }
     })
 }
